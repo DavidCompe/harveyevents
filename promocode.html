@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Promocode</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f3f5f7;
+    --card: #ffffff;
+    --text: #23364a;
+    --muted: #6d7a88;
+    --line: #d9e1e8;
+    --accent: #00b3ad;
+    --accent-dark: #00918c;
+    --shadow: 0 16px 44px rgba(35, 54, 74, 0.12);
+    --radius: 8px;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: "Lato", "Segoe UI", sans-serif;
+    color: var(--text);
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)),
+      var(--bg);
+    display: grid;
+    place-items: center;
+    padding: 24px;
+  }
+
+  .page {
+    width: 100%;
+    max-width: 440px;
+  }
+
+  .card {
+    background: var(--card);
+    border: 1px solid #e7edf2;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 36px 32px 30px;
+  }
+
+  .brand {
+    display: block;
+    margin-bottom: 18px;
+    color: var(--accent-dark);
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    margin: 0 0 12px;
+    font-size: 34px;
+    line-height: 1.05;
+    font-weight: 900;
+  }
+
+  .intro {
+    margin: 0 0 24px;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  input {
+    width: 100%;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 13px 14px;
+    font-size: 15px;
+    color: var(--text);
+    background: #ffffff;
+    text-transform: uppercase;
+  }
+
+  input:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(0, 179, 173, 0.12);
+  }
+
+  .button {
+    display: block;
+    width: 100%;
+    border: 0;
+    border-radius: 4px;
+    padding: 14px 18px;
+    font-size: 16px;
+    font-weight: 900;
+    color: white;
+    background: var(--accent);
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .button:hover {
+    background: var(--accent-dark);
+  }
+
+  .helper {
+    margin-top: 16px;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .back-link {
+    display: inline-block;
+    margin-top: 18px;
+    color: var(--muted);
+    font-size: 14px;
+    text-decoration: none;
+  }
+
+  .back-link:hover {
+    text-decoration: underline;
+  }
+</style>
+</head>
+<body>
+  <main class="page">
+    <section class="card">
+      <span class="brand">TwoNav</span>
+      <h1>El código</h1>
+      <p class="intro">Introduce tu codigo promocional para anadir productos a tu cuenta.</p>
+
+      <form id="promocode-form">
+        <div class="form-group">
+          <label for="promo-code">Codigo promocional</label>
+          <input id="promo-code" name="code" type="text" placeholder="Introduce tu codigo" required>
+        </div>
+
+        <button class="button" type="submit">Aplicar codigo</button>
+      </form>
+
+      <p class="helper">Codigo de prueba configurado en el prototipo: <strong>MAPA2026</strong></p>
+      <a class="back-link" href="login.html">Volver al inicio</a>
+    </section>
+  </main>
+
+  <script>
+    const validCode = "MAPA2026";
+    const form = document.getElementById("promocode-form");
+    const input = document.getElementById("promo-code");
+
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      const enteredCode = input.value.trim().toUpperCase();
+      const destination = enteredCode === validCode ? "success.html" : "invalidcode.html";
+      window.location.href = destination;
+    });
+  </script>
+</body>
+</html>
