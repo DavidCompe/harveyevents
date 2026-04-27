@@ -139,10 +139,57 @@
   }
 
   .note {
-    margin: 0 0 24px;
+    margin: 0 0 16px;
     color: var(--muted);
     font-size: 14px;
     line-height: 1.6;
+  }
+
+  .install-options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+
+  .install-option {
+    padding: 16px;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    background: #fbfcfd;
+  }
+
+  .install-option h2 {
+    margin: 0 0 8px;
+    font-size: 17px;
+    line-height: 1.2;
+    font-weight: 900;
+  }
+
+  .install-option p {
+    margin: 0 0 14px;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .secondary-options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+
+  .secondary-option {
+    padding-top: 2px;
+  }
+
+  .secondary-option p {
+    margin: 0 0 8px;
+    color: var(--text);
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.45;
   }
 
   .stack {
@@ -171,6 +218,24 @@
     transform: translateY(-1px);
   }
 
+  .button.compact {
+    padding: 12px 14px;
+    font-size: 14px;
+  }
+
+  .text-button {
+    display: inline-block;
+    color: var(--accent-dark);
+    font-size: 14px;
+    font-weight: 900;
+    text-decoration: none;
+  }
+
+  .text-button:hover {
+    color: var(--text);
+    text-decoration: underline;
+  }
+
   .secondary {
     background: white;
     color: var(--text);
@@ -179,6 +244,14 @@
 
   .secondary:hover {
     background: #f7fafb;
+  }
+
+  .footnote {
+    margin: 18px 0 0;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.5;
+    text-align: center;
   }
 
   @media (max-width: 520px) {
@@ -209,16 +282,37 @@
         <span class="product-label">Disponible ahora</span>
         <div class="product-item">
           <div class="product-icon">MAP</div>
-          <span>Mapa de muestra</span>
+          <span>Harvey event map sample</span>
         </div>
       </div>
 
-      <p class="note">Ya lo puedes instalar en tu GPS, en la App TwoNav o desde Land.</p>
+      <p class="note">Ya lo puedes instalar en tu GPS, App TwoNav, o en Land.</p>
+
+      <div class="install-options">
+        <article class="install-option">
+          <h2>App TwoNav</h2>
+          <p>Instala el producto en la aplicacion TwoNav para Android/iOS.</p>
+          <a class="button compact" href="tutorial-app-twonav.html">Ver tutorial App TwoNav</a>
+        </article>
+      </div>
+
+      <div class="secondary-options">
+        <div class="secondary-option">
+          <p>Tienes un dispositivo GPS TwoNav?</p>
+          <a class="text-button" href="tutorial-gps-twonav.html">Ver tutorial GPS TwoNav</a>
+        </div>
+
+        <div class="secondary-option">
+          <p>Quieres usarlo en tu ordenador?</p>
+          <a class="text-button" href="tutorial-land.html">Ver tutorial Land</a>
+        </div>
+      </div>
 
       <div class="stack">
-        <a class="button" href="installinstructions.html">?Y como lo instalo?</a>
         <a class="button secondary" href="index.html">Volver al inicio</a>
       </div>
+
+      <p class="footnote">Te hemos enviado un email con esta informacion para que la tengas disponible siempre que quieras.</p>
     </section>
   </main>
 </body>

@@ -95,8 +95,8 @@
 
   .flow-board {
     position: relative;
-    width: 1660px;
-    height: 980px;
+    width: 1830px;
+    height: 1450px;
     margin: 0 auto;
     border-radius: 28px;
     background:
@@ -210,7 +210,9 @@
   .promocode { left: 760px; top: 330px; }
   .success { left: 1110px; top: 90px; }
   .invalid { left: 1110px; top: 560px; }
-  .install { left: 1360px; top: 330px; }
+  .tutorial-app { left: 1460px; top: 70px; }
+  .tutorial-gps { left: 1460px; top: 540px; }
+  .tutorial-land { left: 1460px; top: 1010px; }
 
   @media (max-width: 900px) {
     .page {
@@ -239,15 +241,19 @@
       <div class="legend-item">Inicio: Welcome</div>
       <div class="legend-item">Ramas: login o registro</div>
       <div class="legend-item">Decision clave: codigo valido o invalido</div>
-      <div class="legend-item">Resultado final: productos anadidos + instalacion</div>
+      <div class="legend-item">Resultado final: productos anadidos + eleccion de instalacion</div>
+      <div class="legend-item">Post-flow: App principal, GPS/Land secundarios</div>
     </div>
 
     <div class="flow-shell">
       <div class="flow-board">
-        <svg class="connections" viewBox="0 0 1660 980" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <svg class="connections" viewBox="0 0 1830 1450" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <defs>
             <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
               <path d="M 0 0 L 12 6 L 0 12 z" fill="#00b3ad"></path>
+            </marker>
+            <marker id="arrow-muted" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+              <path d="M 0 0 L 12 6 L 0 12 z" fill="#7a8a98"></path>
             </marker>
           </defs>
 
@@ -257,7 +263,9 @@
           <path d="M 700 705 C 760 705, 700 420, 760 420" stroke="#00b3ad" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
           <path d="M 1050 420 C 1110 420, 1050 235, 1110 235" stroke="#00b3ad" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
           <path d="M 1050 420 C 1110 420, 1050 705, 1110 705" stroke="#00b3ad" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
-          <path d="M 1400 235 C 1440 235, 1320 420, 1360 420" stroke="#00b3ad" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+          <path d="M 1400 235 C 1435 235, 1430 215, 1460 215" stroke="#00b3ad" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+          <path d="M 1400 250 C 1500 300, 1400 690, 1460 690" stroke="#7a8a98" stroke-width="3" fill="none" stroke-dasharray="8 8" marker-end="url(#arrow-muted)"/>
+          <path d="M 1400 265 C 1510 300, 1360 1160, 1460 1160" stroke="#7a8a98" stroke-width="3" fill="none" stroke-dasharray="8 8" marker-end="url(#arrow-muted)"/>
           <path d="M 1110 705 C 1020 705, 1010 770, 910 770 C 810 770, 760 700, 760 570" stroke="#7a8a98" stroke-width="3" fill="none" stroke-dasharray="8 8" marker-end="url(#arrow)"/>
         </svg>
 
@@ -308,11 +316,12 @@
         <article class="node success">
           <span class="tag">Step 3</span>
           <h2>Success</h2>
-          <p>Confirmacion de productos anadidos a la cuenta y acceso al siguiente paso.</p>
+          <p>Confirmacion de productos anadidos y seleccion de tutorial de instalacion.</p>
           <div class="preview"><iframe src="success.html" title="Success preview"></iframe></div>
           <div class="meta">
             <div><strong>Resultado:</strong> alta correcta del producto.</div>
-            <div><strong>Salidas:</strong> instalacion o volver al inicio.</div>
+            <div><strong>Salidas:</strong> App TwoNav principal, GPS/Land secundarios.</div>
+            <div><strong>Apoyo:</strong> email con la informacion.</div>
           </div>
         </article>
 
@@ -327,14 +336,36 @@
           </div>
         </article>
 
-        <article class="node install">
-          <span class="tag">Post Flow</span>
-          <h2>Install Instructions</h2>
-          <p>Pantalla de apoyo que explica el siguiente paso una vez recibido el producto.</p>
-          <div class="preview"><iframe src="installinstructions.html" title="Install instructions preview"></iframe></div>
+        <article class="node tutorial-app">
+          <span class="tag">Post Flow Principal</span>
+          <h2>App TwoNav</h2>
+          <p>Tutorial prioritario para instalar el producto en la app Android/iOS.</p>
+          <div class="preview"><iframe src="tutorial-app-twonav.html" title="App TwoNav tutorial preview"></iframe></div>
           <div class="meta">
-            <div><strong>Entrada:</strong> desde Success.</div>
-            <div><strong>Rol:</strong> soporte post-canjes.</div>
+            <div><strong>Entrada:</strong> CTA principal desde Success.</div>
+            <div><strong>Incluye:</strong> paso 0 para instalar la app.</div>
+          </div>
+        </article>
+
+        <article class="node tutorial-gps">
+          <span class="tag">Post Flow Secundario</span>
+          <h2>GPS TwoNav</h2>
+          <p>Acceso secundario para usuarios con dispositivo GPS TwoNav.</p>
+          <div class="preview"><iframe src="tutorial-gps-twonav.html" title="GPS TwoNav tutorial preview"></iframe></div>
+          <div class="meta">
+            <div><strong>Entrada:</strong> enlace discreto desde Success.</div>
+            <div><strong>Rol:</strong> soporte para dispositivo dedicado.</div>
+          </div>
+        </article>
+
+        <article class="node tutorial-land">
+          <span class="tag">Post Flow Secundario</span>
+          <h2>Land</h2>
+          <p>Acceso secundario para usar el producto desde ordenador Windows/Mac.</p>
+          <div class="preview"><iframe src="tutorial-land.html" title="Land tutorial preview"></iframe></div>
+          <div class="meta">
+            <div><strong>Entrada:</strong> enlace discreto desde Success.</div>
+            <div><strong>Rol:</strong> soporte para planificacion en ordenador.</div>
           </div>
         </article>
       </div>

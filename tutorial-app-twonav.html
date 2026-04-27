@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gracias</title>
+<title>Tutorial App TwoNav</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
@@ -16,7 +16,6 @@
     --line: #d9e1e8;
     --accent: #00b3ad;
     --accent-dark: #00918c;
-    --accent-soft: rgba(0, 179, 173, 0.08);
     --shadow: 0 16px 44px rgba(35, 54, 74, 0.12);
     --radius: 8px;
   }
@@ -61,28 +60,6 @@
     text-transform: uppercase;
   }
 
-  .status {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 18px;
-    padding: 10px 14px;
-    border-radius: 999px;
-    background: var(--accent-soft);
-    color: var(--accent-dark);
-    font-size: 13px;
-    font-weight: 900;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
-
-  .status-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 999px;
-    background: var(--accent);
-  }
-
   h1 {
     margin: 0 0 12px;
     font-size: 34px;
@@ -97,52 +74,44 @@
     line-height: 1.6;
   }
 
-  .product-box {
-    margin-bottom: 26px;
-    padding: 18px;
-    border: 1px solid var(--line);
-    border-radius: 6px;
-    background: #fbfcfd;
-  }
-
-  .product-label {
-    display: block;
-    margin-bottom: 10px;
-    color: var(--muted);
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
-
-  .product-item {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-size: 16px;
-    font-weight: 700;
+  ol {
+    margin: 0 0 26px;
+    padding-left: 22px;
     color: var(--text);
   }
 
-  .product-icon {
-    width: 40px;
-    height: 40px;
-    border-radius: 6px;
-    display: grid;
-    place-items: center;
-    background: white;
-    border: 1px solid var(--line);
-    color: var(--accent-dark);
-    font-size: 12px;
-    font-weight: 900;
-    letter-spacing: 0.08em;
+  li {
+    margin-bottom: 12px;
+    line-height: 1.55;
   }
 
-  .note {
-    margin: 0 0 24px;
-    color: var(--muted);
-    font-size: 14px;
-    line-height: 1.6;
+  li::marker {
+    color: var(--accent-dark);
+    font-weight: 900;
+  }
+
+  .store-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+  }
+
+  .store-link {
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 8px 10px;
+    color: var(--text);
+    background: white;
+    font-size: 13px;
+    font-weight: 900;
+    text-decoration: none;
+  }
+
+  .store-link:hover {
+    background: #f7fafb;
   }
 
   .stack {
@@ -197,26 +166,25 @@
   <main class="page">
     <section class="card">
       <span class="brand">TwoNav</span>
-      <div class="status">
-        <span class="status-dot"></span>
-        Productos anadidos
-      </div>
+      <h1>App TwoNav</h1>
+      <p class="intro">Instala el mapa en la aplicacion TwoNav para Android/iOS usando la cuenta donde has canjeado el producto.</p>
 
-      <h1>Gracias</h1>
-      <p class="intro">Se han anadido los siguientes productos a tu cuenta TwoNav.</p>
-
-      <div class="product-box">
-        <span class="product-label">Disponible ahora</span>
-        <div class="product-item">
-          <div class="product-icon">MAP</div>
-          <span>Mapa de muestra</span>
-        </div>
-      </div>
-
-      <p class="note">Ya lo puedes instalar en tu GPS, en la App TwoNav o desde Land.</p>
+      <ol start="0">
+        <li>
+          Si aun no tienes la aplicacion, instalala en tu movil.
+          <div class="store-links">
+            <a class="store-link" href="https://play.google.com/store/apps/details?id=com.compegps.twonav" target="_blank" rel="noopener">Android</a>
+            <a class="store-link" href="https://apps.apple.com/es/app/id515257832" target="_blank" rel="noopener">iOSe</a>
+          </div>
+        </li>
+        <li>Abre la App TwoNav e inicia sesion con tu cuenta TwoNav.</li>
+        <li>Entra en la seccion de productos comprados.</li>
+        <li>Selecciona "Instalar mis mapas comprados".</li>
+        <li>Elige el mapa y espera a que termine la descarga.</li>
+      </ol>
 
       <div class="stack">
-        <a class="button" href="installinstructions.html">?Y como lo instalo?</a>
+        <a class="button" href="success.html">Volver a opciones</a>
         <a class="button secondary" href="index.html">Volver al inicio</a>
       </div>
     </section>
