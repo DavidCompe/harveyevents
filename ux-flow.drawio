@@ -1,0 +1,79 @@
+<mxfile host="65bd71144e">
+    <diagram id="harvey-events-ux-flow" name="Harvey Events UX Flow">
+        <mxGraphModel dx="1386" dy="787" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1700" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="board" value="" style="rounded=1;whiteSpace=wrap;html=1;arcSize=4;fillColor=#f8fbfc;strokeColor=#dfe8ee;shadow=1;" parent="1" vertex="1">
+                    <mxGeometry x="20" y="20" width="1660" height="1060" as="geometry"/>
+                </mxCell>
+                <mxCell id="title" value="&lt;div style=&quot;font-size:32px;font-weight:700;color:#23364a;&quot;&gt;Harvey Events User Journey&lt;/div&gt;&lt;div style=&quot;margin-top:8px;font-size:15px;color:#6d7a88;&quot;&gt;Flujo editable basado en ux-flow.html. Resume pantallas principales, decisiones y estados finales del prototipo.&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="70" y="60" width="820" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="legend" value="&lt;b&gt;Leyenda&lt;/b&gt;&lt;br&gt;Linea continua: camino principal&lt;br&gt;Linea discontinua: reintento o retorno&lt;br&gt;Nodo azul: decision clave&lt;br&gt;Nodo rojo: estado de error" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#ffffff;strokeColor=#d8e2ea;fontColor=#23364a;spacing=12;" parent="1" vertex="1">
+                    <mxGeometry x="1120" y="60" width="460" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="welcome" value="&lt;div style=&quot;font-size:12px;font-weight:700;color:#00918c;&quot;&gt;STEP 1&lt;/div&gt;&lt;div style=&quot;font-size:24px;font-weight:700;margin-top:8px;&quot;&gt;Welcome&lt;/div&gt;&lt;div style=&quot;margin-top:8px;color:#6d7a88;&quot;&gt;Pantalla inicial que introduce el beneficio y ofrece dos caminos de acceso.&lt;/div&gt;&lt;hr&gt;&lt;b&gt;Archivo:&lt;/b&gt; index.html&lt;br&gt;&lt;b&gt;Salidas:&lt;/b&gt; Log In, Create account" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#ffffff;strokeColor=#d8e2ea;fontColor=#23364a;shadow=1;spacing=14;" parent="1" vertex="1">
+                    <mxGeometry x="70" y="420" width="290" height="190" as="geometry"/>
+                </mxCell>
+                <mxCell id="signin" value="&lt;div style=&quot;font-size:12px;font-weight:700;color:#00918c;&quot;&gt;STEP 2A&lt;/div&gt;&lt;div style=&quot;font-size:24px;font-weight:700;margin-top:8px;&quot;&gt;Sign In&lt;/div&gt;&lt;div style=&quot;margin-top:8px;color:#6d7a88;&quot;&gt;Usuario existente accede con email y password para continuar con el canje.&lt;/div&gt;&lt;hr&gt;&lt;b&gt;Archivo:&lt;/b&gt; signin.html&lt;br&gt;&lt;b&gt;Salida:&lt;/b&gt; Promocode" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#ffffff;strokeColor=#d8e2ea;fontColor=#23364a;shadow=1;spacing=14;" parent="1" vertex="1">
+                    <mxGeometry x="420" y="210" width="290" height="190" as="geometry"/>
+                </mxCell>
+                <mxCell id="register" value="&lt;div style=&quot;font-size:12px;font-weight:700;color:#00918c;&quot;&gt;STEP 2B&lt;/div&gt;&lt;div style=&quot;font-size:24px;font-weight:700;margin-top:8px;&quot;&gt;Register&lt;/div&gt;&lt;div style=&quot;margin-top:8px;color:#6d7a88;&quot;&gt;Usuario nuevo crea cuenta antes de seguir con el flujo promocional.&lt;/div&gt;&lt;hr&gt;&lt;b&gt;Archivo:&lt;/b&gt; register.html&lt;br&gt;&lt;b&gt;Salida:&lt;/b&gt; Promocode" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#ffffff;strokeColor=#d8e2ea;fontColor=#23364a;shadow=1;spacing=14;" parent="1" vertex="1">
+                    <mxGeometry x="420" y="640" width="290" height="190" as="geometry"/>
+                </mxCell>
+                <mxCell id="promocode" value="&lt;div style=&quot;font-size:12px;font-weight:700;color:#00918c;&quot;&gt;DECISION&lt;/div&gt;&lt;div style=&quot;font-size:24px;font-weight:700;margin-top:8px;&quot;&gt;Promocode&lt;/div&gt;&lt;div style=&quot;margin-top:8px;color:#6d7a88;&quot;&gt;Punto central del journey. El sistema evalua el codigo introducido.&lt;/div&gt;&lt;hr&gt;&lt;b&gt;Archivo:&lt;/b&gt; promocode.html&lt;br&gt;&lt;b&gt;Codigo valido:&lt;/b&gt; MAPA2026&lt;br&gt;&lt;b&gt;Ramas:&lt;/b&gt; success o invalid code" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#e7fbfa;strokeColor=#00b3ad;fontColor=#23364a;shadow=1;spacing=14;" parent="1" vertex="1">
+                    <mxGeometry x="770" y="420" width="290" height="210" as="geometry"/>
+                </mxCell>
+                <mxCell id="success" value="&lt;div style=&quot;font-size:12px;font-weight:700;color:#00918c;&quot;&gt;STEP 3&lt;/div&gt;&lt;div style=&quot;font-size:24px;font-weight:700;margin-top:8px;&quot;&gt;Success&lt;/div&gt;&lt;div style=&quot;margin-top:8px;color:#6d7a88;&quot;&gt;Confirmacion de productos anadidos a la cuenta y acceso al siguiente paso.&lt;/div&gt;&lt;hr&gt;&lt;b&gt;Archivo:&lt;/b&gt; success.html&lt;br&gt;&lt;b&gt;Salidas:&lt;/b&gt; instalacion o volver al inicio" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#ffffff;strokeColor=#d8e2ea;fontColor=#23364a;shadow=1;spacing=14;" parent="1" vertex="1">
+                    <mxGeometry x="1120" y="210" width="290" height="190" as="geometry"/>
+                </mxCell>
+                <mxCell id="invalid" value="&lt;div style=&quot;font-size:12px;font-weight:700;color:#c2453d;&quot;&gt;ERROR STATE&lt;/div&gt;&lt;div style=&quot;font-size:24px;font-weight:700;margin-top:8px;&quot;&gt;Invalid Code&lt;/div&gt;&lt;div style=&quot;margin-top:8px;color:#6d7a88;&quot;&gt;Estado alternativo cuando el codigo no es valido y el usuario debe reintentarlo.&lt;/div&gt;&lt;hr&gt;&lt;b&gt;Archivo:&lt;/b&gt; invalidcode.html&lt;br&gt;&lt;b&gt;Salida:&lt;/b&gt; volver a Promocode" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#fff4f2;strokeColor=#e09a91;fontColor=#23364a;shadow=1;spacing=14;" parent="1" vertex="1">
+                    <mxGeometry x="1120" y="640" width="290" height="190" as="geometry"/>
+                </mxCell>
+                <mxCell id="install" value="&lt;div style=&quot;font-size:12px;font-weight:700;color:#00918c;&quot;&gt;POST FLOW&lt;/div&gt;&lt;div style=&quot;font-size:24px;font-weight:700;margin-top:8px;&quot;&gt;Install Instructions&lt;/div&gt;&lt;div style=&quot;margin-top:8px;color:#6d7a88;&quot;&gt;Pantalla de apoyo que explica el siguiente paso una vez recibido el producto.&lt;/div&gt;&lt;hr&gt;&lt;b&gt;Archivo:&lt;/b&gt; installinstructions.html&lt;br&gt;&lt;b&gt;Rol:&lt;/b&gt; soporte post-canjes" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#ffffff;strokeColor=#d8e2ea;fontColor=#23364a;shadow=1;spacing=14;" parent="1" vertex="1">
+                    <mxGeometry x="1370" y="420" width="290" height="190" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge-welcome-signin" value="Log In" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#00b3ad;strokeWidth=3;fontColor=#00918c;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="welcome" target="signin" edge="1">
+                    <mxGeometry x="0.5625" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="edge-welcome-register" value="Create account" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#00b3ad;strokeWidth=3;fontColor=#00918c;entryX=0;entryY=0.579;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="welcome" target="register" edge="1">
+                    <mxGeometry x="0.5758" y="-5" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="edge-signin-promocode" value="Continue" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#00b3ad;strokeWidth=3;fontColor=#00918c;" parent="1" source="signin" target="promocode" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge-register-promocode" value="Continue" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#00b3ad;strokeWidth=3;fontColor=#00918c;" parent="1" source="register" target="promocode" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge-promocode-success" value="Codigo valido" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#00b3ad;strokeWidth=3;fontColor=#00918c;" parent="1" source="promocode" target="success" edge="1">
+                    <mxGeometry x="0.5758" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="edge-promocode-invalid" value="Codigo invalido" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#00b3ad;strokeWidth=3;fontColor=#00918c;" parent="1" source="promocode" target="invalid" edge="1">
+                    <mxGeometry x="0.625" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="edge-success-install" value="Next step" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#00b3ad;strokeWidth=3;fontColor=#00918c;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="success" target="install" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge-invalid-promocode" value="Try again" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#7a8a98;strokeWidth=2;dashed=1;dashPattern=8 8;fontColor=#6d7a88;" parent="1" source="invalid" target="promocode" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="940" y="850"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="note" value="&lt;b&gt;Nota editable&lt;/b&gt;&lt;br&gt;Este archivo es el equivalente manual/editable del overview HTML. Puedes abrirlo con la extension Draw.io Integration, mover nodos, cambiar textos y guardar con Ctrl+S." style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#ffffff;strokeColor=#d8e2ea;fontColor=#6d7a88;spacing=12;" parent="1" vertex="1">
+                    <mxGeometry x="70" y="930" width="720" height="90" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

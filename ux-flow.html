@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Harvey Events UX Flow</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #eef3f6;
+    --panel: #ffffff;
+    --text: #23364a;
+    --muted: #6d7a88;
+    --line: #d8e2ea;
+    --accent: #00b3ad;
+    --accent-dark: #00918c;
+    --shadow: 0 18px 42px rgba(35, 54, 74, 0.12);
+    --radius: 14px;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    font-family: "Lato", "Segoe UI", sans-serif;
+    color: var(--text);
+    background:
+      radial-gradient(circle at top left, rgba(0, 179, 173, 0.08), transparent 24%),
+      linear-gradient(180deg, #f8fbfc 0%, var(--bg) 100%);
+  }
+
+  .page {
+    padding: 32px 24px 40px;
+  }
+
+  .hero {
+    max-width: 1100px;
+    margin: 0 auto 24px;
+    padding: 28px 30px;
+    background: var(--panel);
+    border: 1px solid #e7edf2;
+    border-radius: 18px;
+    box-shadow: var(--shadow);
+  }
+
+  .eyebrow {
+    display: inline-block;
+    margin-bottom: 12px;
+    color: var(--accent-dark);
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    margin: 0 0 12px;
+    font-size: 38px;
+    line-height: 1.05;
+  }
+
+  .hero p {
+    margin: 0;
+    max-width: 760px;
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .legend {
+    max-width: 1100px;
+    margin: 0 auto 24px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .legend-item {
+    padding: 10px 14px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.82);
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  .flow-shell {
+    overflow-x: auto;
+    padding-bottom: 12px;
+  }
+
+  .flow-board {
+    position: relative;
+    width: 1660px;
+    height: 980px;
+    margin: 0 auto;
+    border-radius: 28px;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.55)),
+      repeating-linear-gradient(
+        0deg,
+        transparent 0,
+        transparent 39px,
+        rgba(216, 226, 234, 0.45) 39px,
+        rgba(216, 226, 234, 0.45) 40px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        transparent 0,
+        transparent 39px,
+        rgba(216, 226, 234, 0.45) 39px,
+        rgba(216, 226, 234, 0.45) 40px
+      );
+    border: 1px solid #dfe8ee;
+    box-shadow: var(--shadow);
+  }
+
+  svg.connections {
+    position: absolute;
+    inset: 0;
+    overflow: visible;
+  }
+
+  .node {
+    position: absolute;
+    width: 290px;
+    padding: 16px;
+    background: rgba(255, 255, 255, 0.94);
+    border: 1px solid #e4ebf1;
+    border-radius: var(--radius);
+    box-shadow: 0 14px 34px rgba(35, 54, 74, 0.1);
+    backdrop-filter: blur(8px);
+  }
+
+  .node h2 {
+    margin: 0 0 8px;
+    font-size: 24px;
+    line-height: 1.1;
+  }
+
+  .node p {
+    margin: 0 0 12px;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.45;
+  }
+
+  .tag {
+    display: inline-block;
+    margin-bottom: 10px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: rgba(0, 179, 173, 0.1);
+    color: var(--accent-dark);
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .preview {
+    height: 180px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: #f7fafc;
+    margin-bottom: 12px;
+  }
+
+  .preview iframe {
+    width: 320px;
+    height: 420px;
+    border: 0;
+    transform: scale(0.5625);
+    transform-origin: top left;
+    pointer-events: none;
+  }
+
+  .meta {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+
+  .meta strong {
+    color: var(--text);
+  }
+
+  .note {
+    max-width: 1100px;
+    margin: 22px auto 0;
+    padding: 16px 18px;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.8);
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .welcome { left: 60px; top: 330px; }
+  .signin { left: 410px; top: 90px; }
+  .register { left: 410px; top: 560px; }
+  .promocode { left: 760px; top: 330px; }
+  .success { left: 1110px; top: 90px; }
+  .invalid { left: 1110px; top: 560px; }
+  .install { left: 1360px; top: 330px; }
+
+  @media (max-width: 900px) {
+    .page {
+      padding: 20px 14px 28px;
+    }
+
+    .hero {
+      padding: 22px 20px;
+    }
+
+    h1 {
+      font-size: 30px;
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+    <section class="hero">
+      <span class="eyebrow">UX Flow Overview</span>
+      <h1>Harvey Events User Journey</h1>
+      <p>Vista de presentacion del flujo completo del prototipo. La pagina resume las pantallas principales, los puntos de decision y las rutas posibles para explicar el producto de forma rapida a equipo, stakeholders o cliente.</p>
+    </section>
+
+    <div class="legend">
+      <div class="legend-item">Inicio: Welcome</div>
+      <div class="legend-item">Ramas: login o registro</div>
+      <div class="legend-item">Decision clave: codigo valido o invalido</div>
+      <div class="legend-item">Resultado final: productos anadidos + instalacion</div>
+    </div>
+
+    <div class="flow-shell">
+      <div class="flow-board">
+        <svg class="connections" viewBox="0 0 1660 980" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs>
+            <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+              <path d="M 0 0 L 12 6 L 0 12 z" fill="#00b3ad"></path>
+            </marker>
+          </defs>
+
+          <path d="M 350 420 C 410 420, 360 250, 410 235" stroke="#00b3ad" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+          <path d="M 350 420 C 410 420, 360 700, 410 705" stroke="#00b3ad" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+          <path d="M 700 235 C 760 235, 700 420, 760 420" stroke="#00b3ad" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+          <path d="M 700 705 C 760 705, 700 420, 760 420" stroke="#00b3ad" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+          <path d="M 1050 420 C 1110 420, 1050 235, 1110 235" stroke="#00b3ad" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+          <path d="M 1050 420 C 1110 420, 1050 705, 1110 705" stroke="#00b3ad" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+          <path d="M 1400 235 C 1440 235, 1320 420, 1360 420" stroke="#00b3ad" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+          <path d="M 1110 705 C 1020 705, 1010 770, 910 770 C 810 770, 760 700, 760 570" stroke="#7a8a98" stroke-width="3" fill="none" stroke-dasharray="8 8" marker-end="url(#arrow)"/>
+        </svg>
+
+        <article class="node welcome">
+          <span class="tag">Step 1</span>
+          <h2>Welcome</h2>
+          <p>Pantalla inicial que introduce el beneficio y ofrece dos caminos de acceso.</p>
+          <div class="preview"><iframe src="index.html" title="Welcome preview"></iframe></div>
+          <div class="meta">
+            <div><strong>Objetivo:</strong> presentar la propuesta y abrir el flujo.</div>
+            <div><strong>Salidas:</strong> Log In, Create account.</div>
+          </div>
+        </article>
+
+        <article class="node signin">
+          <span class="tag">Step 2A</span>
+          <h2>Sign In</h2>
+          <p>Usuario existente accede con email y password para continuar con el canje.</p>
+          <div class="preview"><iframe src="signin.html" title="Sign in preview"></iframe></div>
+          <div class="meta">
+            <div><strong>Entrada:</strong> desde Welcome.</div>
+            <div><strong>Salida:</strong> envio a Promocode.</div>
+          </div>
+        </article>
+
+        <article class="node register">
+          <span class="tag">Step 2B</span>
+          <h2>Register</h2>
+          <p>Usuario nuevo crea cuenta antes de seguir con el flujo promocional.</p>
+          <div class="preview"><iframe src="register.html" title="Register preview"></iframe></div>
+          <div class="meta">
+            <div><strong>Entrada:</strong> desde Welcome.</div>
+            <div><strong>Salida:</strong> envio a Promocode.</div>
+          </div>
+        </article>
+
+        <article class="node promocode">
+          <span class="tag">Decision</span>
+          <h2>Promocode</h2>
+          <p>Punto central del journey. El sistema evalua el codigo introducido.</p>
+          <div class="preview"><iframe src="promocode.html" title="Promocode preview"></iframe></div>
+          <div class="meta">
+            <div><strong>Codigo valido:</strong> `MAPA2026`.</div>
+            <div><strong>Ramas:</strong> success o invalid code.</div>
+          </div>
+        </article>
+
+        <article class="node success">
+          <span class="tag">Step 3</span>
+          <h2>Success</h2>
+          <p>Confirmacion de productos anadidos a la cuenta y acceso al siguiente paso.</p>
+          <div class="preview"><iframe src="success.html" title="Success preview"></iframe></div>
+          <div class="meta">
+            <div><strong>Resultado:</strong> alta correcta del producto.</div>
+            <div><strong>Salidas:</strong> instalacion o volver al inicio.</div>
+          </div>
+        </article>
+
+        <article class="node invalid">
+          <span class="tag">Error State</span>
+          <h2>Invalid Code</h2>
+          <p>Estado alternativo cuando el codigo no es valido y el usuario debe reintentarlo.</p>
+          <div class="preview"><iframe src="invalidcode.html" title="Invalid code preview"></iframe></div>
+          <div class="meta">
+            <div><strong>Resultado:</strong> error controlado.</div>
+            <div><strong>Salida:</strong> volver a Promocode.</div>
+          </div>
+        </article>
+
+        <article class="node install">
+          <span class="tag">Post Flow</span>
+          <h2>Install Instructions</h2>
+          <p>Pantalla de apoyo que explica el siguiente paso una vez recibido el producto.</p>
+          <div class="preview"><iframe src="installinstructions.html" title="Install instructions preview"></iframe></div>
+          <div class="meta">
+            <div><strong>Entrada:</strong> desde Success.</div>
+            <div><strong>Rol:</strong> soporte post-canjes.</div>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <div class="note">
+      Puedes usar esta pagina como documento de UX para explicacion funcional. Si quieres convertirla en una slide mas formal, tambien puedo prepararte una segunda version mas limpia, en formato horizontal tipo presentacion o incluso una imagen exportable.
+    </div>
+  </div>
+</body>
+</html>
