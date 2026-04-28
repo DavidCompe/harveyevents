@@ -16,8 +16,12 @@
     --line: #d8e2ea;
     --accent: #00b3ad;
     --accent-dark: #00918c;
+    --danger: #c2453d;
+    --danger-soft: #fff4f2;
+    --success-soft: #edf7ec;
+    --success-line: #82b366;
+    --external-soft: #f4f7fb;
     --shadow: 0 18px 42px rgba(35, 54, 74, 0.12);
-    --radius: 14px;
   }
 
   * {
@@ -26,81 +30,84 @@
 
   body {
     margin: 0;
+    min-width: 1180px;
     font-family: "Lato", "Segoe UI", sans-serif;
     color: var(--text);
     background:
-      radial-gradient(circle at top left, rgba(0, 179, 173, 0.08), transparent 24%),
-      linear-gradient(180deg, #f8fbfc 0%, var(--bg) 100%);
+      linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(255, 255, 255, 0.5)),
+      var(--bg);
   }
 
   .page {
-    padding: 32px 24px 40px;
+    padding: 32px 24px 42px;
   }
 
   .hero {
-    max-width: 1100px;
-    margin: 0 auto 24px;
-    padding: 28px 30px;
-    background: var(--panel);
-    border: 1px solid #e7edf2;
-    border-radius: 18px;
-    box-shadow: var(--shadow);
+    width: 2440px;
+    max-width: calc(100vw - 48px);
+    margin: 0 auto 22px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
   }
 
-  .eyebrow {
-    display: inline-block;
-    margin-bottom: 12px;
-    color: var(--accent-dark);
-    font-size: 12px;
-    font-weight: 900;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-  }
-
-  h1 {
-    margin: 0 0 12px;
-    font-size: 38px;
-    line-height: 1.05;
-  }
-
-  .hero p {
+  .hero h1 {
     margin: 0;
-    max-width: 760px;
-    color: var(--muted);
-    font-size: 16px;
-    line-height: 1.6;
+    font-size: 34px;
+    line-height: 1.05;
+    font-weight: 900;
   }
 
   .legend {
-    max-width: 1100px;
-    margin: 0 auto 24px;
     display: flex;
-    gap: 12px;
+    gap: 10px;
     flex-wrap: wrap;
+    justify-content: flex-end;
   }
 
-  .legend-item {
-    padding: 10px 14px;
+  .legend span {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 11px;
     border: 1px solid var(--line);
     border-radius: 999px;
-    background: rgba(255, 255, 255, 0.82);
+    background: rgba(255, 255, 255, 0.86);
     color: var(--muted);
-    font-size: 14px;
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  .swatch {
+    width: 24px;
+    height: 3px;
+    border-radius: 99px;
+    background: var(--accent);
+  }
+
+  .swatch.dashed {
+    background: repeating-linear-gradient(90deg, #7a8a98 0 7px, transparent 7px 12px);
+  }
+
+  .swatch.error {
+    background: var(--danger);
   }
 
   .flow-shell {
-    overflow-x: auto;
+    overflow: auto;
     padding-bottom: 12px;
   }
 
   .flow-board {
     position: relative;
-    width: 1830px;
-    height: 1450px;
+    width: 2440px;
+    height: 2320px;
     margin: 0 auto;
-    border-radius: 28px;
+    border: 1px solid #dfe8ee;
+    border-radius: 8px;
     background:
-      linear-gradient(180deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.55)),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.74), rgba(255, 255, 255, 0.64)),
       repeating-linear-gradient(
         0deg,
         transparent 0,
@@ -115,139 +122,193 @@
         rgba(216, 226, 234, 0.45) 39px,
         rgba(216, 226, 234, 0.45) 40px
       );
-    border: 1px solid #dfe8ee;
     box-shadow: var(--shadow);
   }
 
-  svg.connections {
+  .connections {
     position: absolute;
     inset: 0;
+    width: 2440px;
+    height: 2320px;
     overflow: visible;
+    pointer-events: none;
   }
 
   .node {
     position: absolute;
-    width: 290px;
-    padding: 16px;
-    background: rgba(255, 255, 255, 0.94);
-    border: 1px solid #e4ebf1;
-    border-radius: var(--radius);
-    box-shadow: 0 14px 34px rgba(35, 54, 74, 0.1);
-    backdrop-filter: blur(8px);
+    width: 310px;
+    height: 500px;
+    padding: 10px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 14px 34px rgba(35, 54, 74, 0.11);
   }
 
-  .node h2 {
-    margin: 0 0 8px;
-    font-size: 24px;
-    line-height: 1.1;
+  .node.success {
+    background: var(--success-soft);
+    border-color: var(--success-line);
   }
 
-  .node p {
-    margin: 0 0 12px;
-    color: var(--muted);
-    font-size: 14px;
-    line-height: 1.45;
+  .node.error {
+    background: var(--danger-soft);
+    border-color: #e09a91;
+  }
+
+  .node.external {
+    height: 170px;
+    background: var(--external-soft);
+    border-color: #a9b9c8;
+  }
+
+  .node-head {
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 8px;
   }
 
   .tag {
-    display: inline-block;
-    margin-bottom: 10px;
-    padding: 6px 10px;
-    border-radius: 999px;
+    max-width: 128px;
+    padding: 5px 8px;
+    border-radius: 99px;
     background: rgba(0, 179, 173, 0.1);
     color: var(--accent-dark);
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 900;
-    letter-spacing: 0.05em;
+    line-height: 1;
     text-transform: uppercase;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
-  .preview {
-    height: 180px;
+  .error .tag {
+    background: rgba(194, 69, 61, 0.12);
+    color: var(--danger);
+  }
+
+  .external .tag {
+    background: rgba(109, 122, 136, 0.12);
+    color: var(--muted);
+  }
+
+  .node-title {
+    min-width: 0;
+    margin: 0;
+    font-size: 18px;
+    line-height: 1.1;
+    font-weight: 900;
+    text-align: right;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .screen {
+    width: 100%;
+    height: 438px;
     overflow: hidden;
     border: 1px solid var(--line);
-    border-radius: 10px;
+    border-radius: 6px;
     background: #f7fafc;
-    margin-bottom: 12px;
   }
 
-  .preview iframe {
-    width: 320px;
-    height: 420px;
+  .screen iframe {
+    width: 440px;
+    height: 720px;
     border: 0;
-    transform: scale(0.5625);
+    transform: scale(0.655);
     transform-origin: top left;
     pointer-events: none;
+    background: white;
   }
 
-  .meta {
+  .external-grid {
+    height: 106px;
+    display: grid;
+    gap: 8px;
+  }
+
+  .external-link {
     display: flex;
-    flex-direction: column;
-    gap: 6px;
-    color: var(--muted);
-    font-size: 13px;
-  }
-
-  .meta strong {
-    color: var(--text);
-  }
-
-  .note {
-    max-width: 1100px;
-    margin: 22px auto 0;
-    padding: 16px 18px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    min-height: 48px;
+    padding: 11px 13px;
     border: 1px solid var(--line);
-    border-radius: 14px;
-    background: rgba(255, 255, 255, 0.8);
-    color: var(--muted);
+    border-radius: 6px;
+    background: #ffffff;
+    color: var(--text);
     font-size: 14px;
-    line-height: 1.6;
+    font-weight: 900;
+    text-decoration: none;
   }
 
-  .welcome { left: 60px; top: 330px; }
-  .signin { left: 410px; top: 90px; }
-  .register { left: 410px; top: 560px; }
-  .promocode { left: 760px; top: 330px; }
-  .success { left: 1110px; top: 90px; }
-  .invalid { left: 1110px; top: 560px; }
-  .tutorial-app { left: 1460px; top: 70px; }
-  .tutorial-gps { left: 1460px; top: 540px; }
-  .tutorial-land { left: 1460px; top: 1010px; }
+  .external-link span {
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  .welcome { left: 70px; top: 620px; }
+  .signin { left: 420px; top: 310px; }
+  .register { left: 430px; top: 880px; }
+  .promocode { left: 880px; top: 620px; }
+  .thank-you { left: 1280px; top: 620px; }
+  .invalid { left: 880px; top: 1190px; }
+  .support { left: 1275px; top: 1190px; }
+  .tutorial-app { left: 1770px; top: 620px; }
+  .tutorial-gps { left: 1770px; top: 1190px; }
+  .tutorial-land { left: 1770px; top: 1760px; }
+  .stores { left: 2120px; top: 650px; }
 
   @media (max-width: 900px) {
+    body {
+      min-width: 100%;
+    }
+
     .page {
-      padding: 20px 14px 28px;
+      padding: 20px 14px 30px;
     }
 
     .hero {
-      padding: 22px 20px;
+      display: block;
+      max-width: none;
+      width: 2440px;
+      margin-left: 0;
+      margin-right: 0;
     }
 
-    h1 {
-      font-size: 30px;
+    .hero h1 {
+      margin-bottom: 12px;
+      font-size: 28px;
+    }
+
+    .flow-board {
+      margin-left: 0;
+      margin-right: 0;
     }
   }
 </style>
 </head>
 <body>
-  <div class="page">
-    <section class="hero">
-      <span class="eyebrow">UX Flow Overview</span>
-      <h1>Harvey Events User Journey</h1>
-      <p>Presentation view of the complete prototype flow. This page summarizes the main screens, decision points, and possible routes so the product can be explained quickly to the team, stakeholders, or client.</p>
-    </section>
-
-    <div class="legend">
-      <div class="legend-item">Start: Welcome</div>
-      <div class="legend-item">Branches: login or registration</div>
-      <div class="legend-item">Key decision: valid or invalid code</div>
-      <div class="legend-item">Final result: products added + installation choice</div>
-      <div class="legend-item">Post-flow: main app, secondary GPS/Land options</div>
-    </div>
+  <main class="page">
+    <header class="hero">
+      <h1>Harvey Events UX Flow</h1>
+      <div class="legend" aria-label="Flow legend">
+        <span><i class="swatch"></i>Primary path</span>
+        <span><i class="swatch dashed"></i>Secondary / external</span>
+        <span><i class="swatch error"></i>Error path</span>
+      </div>
+    </header>
 
     <div class="flow-shell">
-      <div class="flow-board">
-        <svg class="connections" viewBox="0 0 1830 1450" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <section class="flow-board" aria-label="Harvey Events prototype screens">
+        <svg class="connections" viewBox="0 0 2440 2320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <defs>
             <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
               <path d="M 0 0 L 12 6 L 0 12 z" fill="#00b3ad"></path>
@@ -255,125 +316,145 @@
             <marker id="arrow-muted" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
               <path d="M 0 0 L 12 6 L 0 12 z" fill="#7a8a98"></path>
             </marker>
+            <marker id="arrow-error" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+              <path d="M 0 0 L 12 6 L 0 12 z" fill="#c2453d"></path>
+            </marker>
           </defs>
 
-          <path d="M 350 420 C 410 420, 360 250, 410 235" stroke="#00b3ad" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
-          <path d="M 350 420 C 410 420, 360 700, 410 705" stroke="#00b3ad" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
-          <path d="M 700 235 C 760 235, 700 420, 760 420" stroke="#00b3ad" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
-          <path d="M 700 705 C 760 705, 700 420, 760 420" stroke="#00b3ad" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
-          <path d="M 1050 420 C 1110 420, 1050 235, 1110 235" stroke="#00b3ad" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
-          <path d="M 1050 420 C 1110 420, 1050 705, 1110 705" stroke="#00b3ad" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
-          <path d="M 1400 235 C 1435 235, 1430 215, 1460 215" stroke="#00b3ad" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
-          <path d="M 1400 250 C 1500 300, 1400 690, 1460 690" stroke="#7a8a98" stroke-width="3" fill="none" stroke-dasharray="8 8" marker-end="url(#arrow-muted)"/>
-          <path d="M 1400 265 C 1510 300, 1360 1160, 1460 1160" stroke="#7a8a98" stroke-width="3" fill="none" stroke-dasharray="8 8" marker-end="url(#arrow-muted)"/>
-          <path d="M 1110 705 C 1020 705, 1010 770, 910 770 C 810 770, 760 700, 760 570" stroke="#7a8a98" stroke-width="3" fill="none" stroke-dasharray="8 8" marker-end="url(#arrow)"/>
+          <path d="M 380 870 L 565 870 L 565 560 L 420 560" stroke="#00b3ad" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+          <path d="M 380 870 L 565 870 L 565 1130 L 430 1130" stroke="#00b3ad" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+          <path d="M 730 560 C 815 560, 790 870, 880 870" stroke="#00b3ad" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+          <path d="M 740 1130 C 820 1130, 790 870, 880 870" stroke="#00b3ad" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+          <path d="M 1190 870 L 1280 870" stroke="#00b3ad" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+          <path d="M 1035 1120 L 1035 1190" stroke="#c2453d" stroke-width="4" fill="none" marker-end="url(#arrow-error)"/>
+          <path d="M 1590 870 L 1770 870" stroke="#00b3ad" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+          <path d="M 1590 870 L 1700 870 L 1700 1440 L 1770 1440" stroke="#7a8a98" stroke-width="3" fill="none" stroke-dasharray="8 8" marker-end="url(#arrow-muted)"/>
+          <path d="M 1590 870 L 1720 870 L 1720 2010 L 1770 2010" stroke="#7a8a98" stroke-width="3" fill="none" stroke-dasharray="8 8" marker-end="url(#arrow-muted)"/>
+          <path d="M 1435 1120 L 1435 1190" stroke="#7a8a98" stroke-width="3" fill="none" stroke-dasharray="4 8" marker-end="url(#arrow-muted)"/>
+          <path d="M 2080 870 C 2110 870, 2090 735, 2120 735" stroke="#7a8a98" stroke-width="3" fill="none" stroke-dasharray="4 8" marker-end="url(#arrow-muted)"/>
         </svg>
 
         <article class="node welcome">
-          <span class="tag">Step 1</span>
-          <h2>Welcome</h2>
-          <p>Initial screen that introduces the benefit and offers two access paths.</p>
-          <div class="preview"><iframe src="index.html" title="Welcome preview"></iframe></div>
-          <div class="meta">
-            <div><strong>Goal:</strong> present the proposal and open the flow.</div>
-            <div><strong>Exits:</strong> Log In, Create account.</div>
+          <div class="node-head">
+            <span class="tag">Step 1</span>
+            <h2 class="node-title">Welcome</h2>
+          </div>
+          <div class="screen">
+            <iframe src="index.html" title="Welcome screen"></iframe>
           </div>
         </article>
 
         <article class="node signin">
-          <span class="tag">Step 2A</span>
-          <h2>Sign In</h2>
-          <p>Existing user signs in with email and password to continue redeeming the product.</p>
-          <div class="preview"><iframe src="signin.html" title="Sign in preview"></iframe></div>
-          <div class="meta">
-            <div><strong>Entry:</strong> from Welcome.</div>
-            <div><strong>Exit:</strong> sent to Promo Code.</div>
+          <div class="node-head">
+            <span class="tag">Step 2A</span>
+            <h2 class="node-title">Login to TwoNav</h2>
+          </div>
+          <div class="screen">
+            <iframe src="signin.html" title="Login to TwoNav screen"></iframe>
           </div>
         </article>
 
         <article class="node register">
-          <span class="tag">Step 2B</span>
-          <h2>Register</h2>
-          <p>New user creates an account before continuing with the promotional flow.</p>
-          <div class="preview"><iframe src="register.html" title="Register preview"></iframe></div>
-          <div class="meta">
-            <div><strong>Entry:</strong> from Welcome.</div>
-            <div><strong>Exit:</strong> sent to Promo Code.</div>
+          <div class="node-head">
+            <span class="tag">Step 2B</span>
+            <h2 class="node-title">Create Account</h2>
+          </div>
+          <div class="screen">
+            <iframe src="register.html" title="Create account screen"></iframe>
           </div>
         </article>
 
         <article class="node promocode">
-          <span class="tag">Decision</span>
-          <h2>Promo Code</h2>
-          <p>Central point of the journey. The system evaluates the entered code.</p>
-          <div class="preview"><iframe src="promocode.html" title="Promo code preview"></iframe></div>
-          <div class="meta">
-            <div><strong>Valid code:</strong> `MAPA2026`.</div>
-            <div><strong>Branches:</strong> success or invalid code.</div>
+          <div class="node-head">
+            <span class="tag">Step 3</span>
+            <h2 class="node-title">The Code</h2>
+          </div>
+          <div class="screen">
+            <iframe src="promocode.html" title="Promo code screen"></iframe>
           </div>
         </article>
 
-        <article class="node success">
-          <span class="tag">Step 3</span>
-          <h2>Success</h2>
-          <p>Confirmation that products were added and selection of the installation tutorial.</p>
-          <div class="preview"><iframe src="success.html" title="Success preview"></iframe></div>
-          <div class="meta">
-            <div><strong>Result:</strong> product added successfully.</div>
-            <div><strong>Exits:</strong> main TwoNav App, secondary GPS/Land.</div>
-            <div><strong>Support:</strong> email with the information.</div>
+        <article class="node success thank-you">
+          <div class="node-head">
+            <span class="tag">Step 4</span>
+            <h2 class="node-title">Thank You</h2>
+          </div>
+          <div class="screen">
+            <iframe src="success.html" title="Thank you screen"></iframe>
           </div>
         </article>
 
-        <article class="node invalid">
-          <span class="tag">Error State</span>
-          <h2>Invalid Code</h2>
-          <p>Alternate state when the code is not valid and the user needs to try again.</p>
-          <div class="preview"><iframe src="invalidcode.html" title="Invalid code preview"></iframe></div>
-          <div class="meta">
-            <div><strong>Result:</strong> handled error.</div>
-            <div><strong>Exit:</strong> back to Promo Code.</div>
+        <article class="node error invalid">
+          <div class="node-head">
+            <span class="tag">Error State</span>
+            <h2 class="node-title">Invalid Code</h2>
+          </div>
+          <div class="screen">
+            <iframe src="invalidcode.html" title="Invalid code screen"></iframe>
           </div>
         </article>
 
-        <article class="node tutorial-app">
-          <span class="tag">Main Post Flow</span>
-          <h2>App TwoNav</h2>
-          <p>Priority tutorial for installing the product in the Android/iOS app.</p>
-          <div class="preview"><iframe src="tutorial-app-twonav.html" title="App TwoNav tutorial preview"></iframe></div>
-          <div class="meta">
-            <div><strong>Entry:</strong> main CTA from Success.</div>
-            <div><strong>Includes:</strong> step 0 to install the app.</div>
+        <article class="node tutorial tutorial-app">
+          <div class="node-head">
+            <span class="tag">Main Post Flow</span>
+            <h2 class="node-title">App TwoNav</h2>
+          </div>
+          <div class="screen">
+            <iframe src="tutorial-app-twonav.html" title="App TwoNav tutorial screen"></iframe>
           </div>
         </article>
 
-        <article class="node tutorial-gps">
-          <span class="tag">Secondary Post Flow</span>
-          <h2>GPS TwoNav</h2>
-          <p>Secondary access for users with a TwoNav GPS device.</p>
-          <div class="preview"><iframe src="tutorial-gps-twonav.html" title="GPS TwoNav tutorial preview"></iframe></div>
-          <div class="meta">
-            <div><strong>Entry:</strong> discreet link from Success.</div>
-            <div><strong>Role:</strong> support for dedicated device.</div>
+        <article class="node tutorial tutorial-gps">
+          <div class="node-head">
+            <span class="tag">Secondary</span>
+            <h2 class="node-title">GPS TwoNav</h2>
+          </div>
+          <div class="screen">
+            <iframe src="tutorial-gps-twonav.html" title="GPS TwoNav tutorial screen"></iframe>
           </div>
         </article>
 
-        <article class="node tutorial-land">
-          <span class="tag">Secondary Post Flow</span>
-          <h2>Land</h2>
-          <p>Secondary access for using the product from a Windows/Mac computer.</p>
-          <div class="preview"><iframe src="tutorial-land.html" title="Land tutorial preview"></iframe></div>
-          <div class="meta">
-            <div><strong>Entry:</strong> discreet link from Success.</div>
-            <div><strong>Role:</strong> support for planning on a computer.</div>
+        <article class="node tutorial tutorial-land">
+          <div class="node-head">
+            <span class="tag">Secondary</span>
+            <h2 class="node-title">Land</h2>
+          </div>
+          <div class="screen">
+            <iframe src="tutorial-land.html" title="Land tutorial screen"></iframe>
           </div>
         </article>
-      </div>
+
+        <article class="node external support">
+          <div class="node-head">
+            <span class="tag">External Links</span>
+            <h2 class="node-title">Support</h2>
+          </div>
+          <div class="external-grid">
+            <a class="external-link" href="https://support.twonav.com" target="_blank" rel="noopener">
+              support.twonav.com
+              <span>external</span>
+            </a>
+          </div>
+        </article>
+
+        <article class="node external stores">
+          <div class="node-head">
+            <span class="tag">External Links</span>
+            <h2 class="node-title">Stores</h2>
+          </div>
+          <div class="external-grid">
+            <a class="external-link" href="https://play.google.com/store/apps/details?id=com.compegps.twonav" target="_blank" rel="noopener">
+              Google Play
+              <span>Android</span>
+            </a>
+            <a class="external-link" href="https://apps.apple.com/es/app/id515257832" target="_blank" rel="noopener">
+              App Store
+              <span>iOS</span>
+            </a>
+          </div>
+        </article>
+      </section>
     </div>
-
-    <div class="note">
-      This page can be used as a UX document for a functional walkthrough. It can also be adapted into a cleaner horizontal presentation or an exportable image.
-    </div>
-  </div>
+  </main>
 </body>
 </html>
